@@ -1,23 +1,19 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import PostMetaInfo from './PostMetaInfo'
-import Title from './Title'
+import React from "react";
+import PropTypes from "prop-types";
+import PostMetaInfo from "./PostMetaInfo";
+import Title from "./Title";
 
-export default function PostsList ({ posts }) {
+export default function PostsList({ posts }) {
   if (posts.length === 0) {
-    return (
-      <p className='center-text'>
-        This user hasn't posted yet
-      </p>
-    )
+    return <p className="center-text">This user hasn't posted yet</p>;
   }
 
   return (
     <ul>
-      {posts.map((post) => {
+      {posts.map(post => {
         return (
-          <li key={post.id} className='post'>
-            <Title url={post.url} title={post.title} id={post.id} />
+          <li key={post.id} className="post">
+            <Title title={post.title} id={post.id} />
             <PostMetaInfo
               by={post.by}
               time={post.time}
@@ -25,12 +21,12 @@ export default function PostsList ({ posts }) {
               descendants={post.descendants}
             />
           </li>
-        )
+        );
       })}
     </ul>
-  )
+  );
 }
 
 PostsList.propTypes = {
   posts: PropTypes.array.isRequired
-}
+};
